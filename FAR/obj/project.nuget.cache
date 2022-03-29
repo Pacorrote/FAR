@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "O+jtrmXJLV9Q4JnS2WYkOsZGyfr8DvSZrtu8p09jghDt5t6I5Y0GZztjOH1CP60s/7fyoPyACx7Qz6oPez5tDw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ARC\\Documents\\Visual Studio 2022\\Projects\\FAR\\FAR\\FAR.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ARC\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.14.0\\microsoft.visualstudio.azure.containers.tools.targets.1.14.0.nupkg.sha512"
+  ],
+  "logs": []
+}
