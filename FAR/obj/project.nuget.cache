@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "2x2t45ENJtADu6vewpf9aKj9IRuk6rBucWo+iR5HhK1ExT5fUTYmpOk0BjxvbbATJ8hccR55mDffZJ9txY33MA==",
+  "dgSpecHash": "O+jtrmXJLV9Q4JnS2WYkOsZGyfr8DvSZrtu8p09jghDt5t6I5Y0GZztjOH1CP60s/7fyoPyACx7Qz6oPez5tDw==",
   "success": true,
   "projectFilePath": "C:\\Users\\ARC\\Documents\\Visual Studio 2022\\Projects\\FAR\\FAR\\FAR.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ARC\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\ARC\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.14.0\\microsoft.visualstudio.azure.containers.tools.targets.1.14.0.nupkg.sha512"
   ],
   "logs": []
