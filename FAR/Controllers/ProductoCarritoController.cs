@@ -7,7 +7,8 @@ namespace FAR.Controllers
 {
     public class ProductoCarritoController : Controller
     {
-        public const string SQLCONNECTION = "Data Source=MEX-FKTNMG3\\SQLEXPRESS; Initial Catalog=FAR; Trusted_Connection=true; MultipleActiveResultSets=true";
+        public const string SQLCONNECTIONLocal = "Data Source=MEX-FKTNMG3\\SQLEXPRESS; Initial Catalog=FAR; Trusted_Connection=true; MultipleActiveResultSets=true";
+        public const string SQLCONNECTION = "Server=tcp:farstore.database.windows.net,1433;Initial Catalog=FAR;Persist Security Info=False;User ID=FAR;Password=FixWWxkf6VZkysE;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         private readonly ProductoCarritoCommand command = new ProductoCarritoCommand(SQLCONNECTION);
         private readonly ProductoCarritoQueries querie = new ProductoCarritoQueries(SQLCONNECTION);
         // GET: ProductoCarritoController

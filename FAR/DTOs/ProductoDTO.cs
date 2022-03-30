@@ -10,5 +10,6 @@
         public bool Habilitado { get; set; }
         public uint Id_ProductoCarrito { get; set; }
         public uint Id_Categoria { get; set; }
+        public uint Id_Usuario { get; set; }
     }
 }
