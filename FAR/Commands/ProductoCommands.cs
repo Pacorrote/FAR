@@ -67,7 +67,7 @@ namespace FAR.Commands
  
             }
 
-           string sql = "UPDATE Productos SET  Habilitado = " + id + " WHERE Id_Producto=" + id + ";";
+           string sql = "UPDATE Productos SET  Habilitado = " + 0 + " WHERE Id_Producto=" + id + ";";
 
            using (var connection = new SqlConnection(_GetConnection))
            {
