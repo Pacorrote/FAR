@@ -16,7 +16,16 @@ namespace FAR.Queries
 
         public UsuariosRolDTO FindByID(uint id)
         {
-            throw new NotImplementedException();
+            string sql = "Select * from [dbo].[UsuarioRol] where Id_Rol = " + id + ";";
+            using (var connection = new SqlConnection(CONNECTIONSTRING))
+            {
+                var usuarioRol = connection.Query<UsuarioRol>(sql).FirstOrDefault();
+                return new UsuariosRolDTO
+                {
+                    Id_Rol = usuarioRol.Id_Rol,
+                    Tipo_Usuario = usuarioRol.Tipo_Usuario
+                };
+            }
         }
 
         public List<UsuariosRolDTO> GetAll()
@@ -25,10 +34,14 @@ namespace FAR.Queries
             string sql = "Select * from [dbo].[UsuarioRol]";
             using (var connection = new SqlConnection(CONNECTIONSTRING))
             {
-                var usuarios = connection.Query<UsuarioRol>(sql).ToList();
-                for (int i = 0; i < usuarios.Count; i++)
+                var usuarioRol = connection.Query<UsuarioRol>(sql).ToList();
+                for (int i = 0; i < usuarioRol.Count; i++)
                 {
-                    list.Add(new UsuariosRolDTO());
+                    list.Add(new UsuariosRolDTO()
+                    {
+                        Id_Rol = usuarioRol[i].Id_Rol,
+                        Tipo_Usuario = usuarioRol[i].Tipo_Usuario
+                    });
                 }
             }
             return list;

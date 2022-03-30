@@ -1,20 +1,27 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FAR.Commands;
+using FAR.Queries;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FAR.Controllers
 {
     public class UsuariosController : Controller
     {
+        public const string SQLCONNECTION = "Data Source=MEX-FKTNMG3\\SQLEXPRESS; Initial Catalog=FAR; Trusted_Connection=true; MultipleActiveResultSets=true";
+        private readonly UsuariosCommand command = new UsuariosCommand(SQLCONNECTION);
+        private readonly UsuariosQueries querie = new UsuariosQueries(SQLCONNECTION);
         // GET: UsuariosController
         public ActionResult Index()
         {
-            return View();
+            var lista = querie.GetAll();
+            return View("View", lista);
         }
 
         // GET: UsuariosController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(uint id)
         {
-            return View();
+            var usuario = querie.FindByID(id);
+            return View("Details", usuario);
         }
 
         // GET: UsuariosController/Create

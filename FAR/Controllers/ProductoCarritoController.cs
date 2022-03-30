@@ -18,9 +18,10 @@ namespace FAR.Controllers
         }
 
         // GET: ProductoCarritoController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(uint id)
         {
-            return View();
+            var productoCarrito = querie.FindByID(id);
+            return View("Details", productoCarrito);
         }
 
         // GET: ProductoCarritoController/Create

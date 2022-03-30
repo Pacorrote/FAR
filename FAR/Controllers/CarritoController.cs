@@ -13,13 +13,15 @@ namespace FAR.Controllers
         // GET: CarritoController
         public ActionResult Index()
         {
-            return View();
+            var lista = querie.GetAll();
+            return View("View", lista);
         }
 
         // GET: CarritoController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(uint id)
         {
-            return View();
+            var carrito = querie.FindByID(id);
+            return View("Details", carrito);
         }
 
         // GET: CarritoController/Create
@@ -33,6 +35,7 @@ namespace FAR.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
+            
             try
             {
                 return RedirectToAction(nameof(Index));
