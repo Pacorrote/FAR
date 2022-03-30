@@ -8,6 +8,6 @@ namespace FAR.Models
         public uint Id_Carrito { get; set; }
         public string Folio { get; set; }
         public bool Cancelado { get; set; }
-        public double Total_Venta { get; set; }
+        public float Total_venta { get; set; }
     }
 }
