@@ -11,7 +11,6 @@ namespace FAR.Models
         public uint Stock { get; set; }
         public float Precio { get; set; }
         public bool Habilitado { get; set; }
-        public uint Id_ProductoCarrito { get; set; }
         public uint Id_Categoria { get; set; }
     }
 }
