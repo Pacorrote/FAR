@@ -6,5 +6,6 @@ namespace FAR.Queries
     {
         UsuariosDTO FindByID(int id);
         List<UsuariosDTO> GetAll();
+        UsuariosDTO Login(string Email, string Contrasena);
     }
 }
