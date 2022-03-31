@@ -14,9 +14,9 @@ namespace FAR.Commands
         }
         public bool ModifyUsuariosRol(UsuarioRol usuarioRol)
         {
-            string sql = @"UPDATE [dbo].[Usuarios]
+            string sql = @"UPDATE [dbo].[UsuarioRol]
                                     SET [Tipo_Usuario] = @Tipo_Usuario
-                                    WHERE Id_Rol = " + usuarioRol.Id_Rol + "; GO";
+                                    WHERE Id_Rol = " + usuarioRol.Id_Rol + ";";
             try
             {
                 using (var connection = new SqlConnection(CONNECTIONSTRING))
@@ -53,12 +53,10 @@ namespace FAR.Commands
 
         public bool SaveUsuariosRol(UsuarioRol newUR)
         {
-            string sql = @"INSERT INTO [dbo].[Usuarios]
+            string sql = @"INSERT INTO [dbo].[UsuarioRol]
                                    ([Tipo_Usuario])
                              VALUES
-                                   (@Tipo_Usuario)
-                        GO
-                        ";
+                                   (@Tipo_Usuario)";
             try
             {
                 using (var connection = new SqlConnection(CONNECTIONSTRING))

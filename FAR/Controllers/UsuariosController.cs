@@ -1,4 +1,5 @@
 ﻿using FAR.Commands;
+using FAR.Models;
 using FAR.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,20 +29,23 @@ namespace FAR.Controllers
         // GET: UsuariosController/Create
         public ActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         // POST: UsuariosController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create([Bind("Nombre, Apellidos, Telefono, Email, Calle, Id_Localidad, Fecha_Nacimiento, Contrasena, Username, Id_Rol")] Usuarios newUsuario)
         {
+
             try
             {
+                command.SaveUsuario(newUsuario);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return View();
             }
         }
@@ -49,38 +53,73 @@ namespace FAR.Controllers
         // GET: UsuariosController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var usuario = querie.FindByID(id);
+            return View("Editar", new Usuarios
+            {
+                Apellidos = usuario.Apellidos,
+                Calle = usuario.Calle,
+                Contrasena = usuario.Contrasena,
+                Email = usuario.Email,
+                Fecha_Nacimiento = usuario.Fecha_Nacimiento,
+                Id_Localidad = usuario.Id_Localidad,
+                Id_Rol = usuario.Id_Rol,
+                Id_Usuario = usuario.Id_Usuario,
+                Nombre = usuario.Nombre,
+                Telefono = usuario.Telefono,
+                Username = usuario.Username,
+            });
         }
 
         // POST: UsuariosController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit([Bind("Id_Usuario, Nombre, Apellidos, Telefono, Email, Calle, Id_Localidad, Fecha_Nacimiento, Contrasena, Username, Id_Rol")] Usuarios usuario)
         {
             try
             {
+                command.ModifyUsuarios(usuario);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return View();
             }
         }
 
         // GET: UsuariosController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult ViewDelete(int id)
         {
-            return View();
+            var usuario = querie.FindByID(id);
+            return View("Delete", new Usuarios
+            {
+                Apellidos = usuario.Apellidos,
+                Calle = usuario.Calle,
+                Contrasena = usuario.Contrasena,
+                Email = usuario.Email,
+                Fecha_Nacimiento = usuario.Fecha_Nacimiento,
+                Id_Localidad = usuario.Id_Localidad,
+                Id_Rol = usuario.Id_Rol,
+                Id_Usuario = usuario.Id_Usuario,
+                Nombre = usuario.Nombre,
+                Telefono = usuario.Telefono,
+                Username = usuario.Username,
+            });
         }
 
         // POST: UsuariosController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var usuario = command.RemoveUsuarios(id);
+                if(usuario != null)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                return View();
             }
             catch
             {

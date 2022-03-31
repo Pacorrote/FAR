@@ -52,15 +52,82 @@
               </li>
             </ul>
           </li>
+          
           <li class="nav-item">
-            <a  asp-controller="Producto"  asp-action="Create" class="nav-link">
+            <!--<a  asp-controller="Producto"  asp-action="Create" class="nav-link">
               <i class="nav-icon fa fa-shopping-basket"></i>
               <p>
-                Agregar producto
+                Producto
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>-->
+             <a  class="nav-link">
+              <i class="nav-icon fa fa-shopping-basket"></i>
+              <p>
+                Producto
+                <i class="fas fa-angle-left right"></i>
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a class="nav-link" asp-controller="Producto"  asp-action="Create">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Agregar productos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"  asp-controller="Producto"  asp-action="Index">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Productos</p>
+                </a>
+              </li>
+            </ul>
           </li>
+
+          <li class="nav-item">
+             <a  class="nav-link">
+              <i class="nav-icon fas fa-archive"></i>
+              <p>
+                Categoria
+                <i class="fas fa-angle-left right"></i>
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a class="nav-link" asp-controller="Producto"  asp-action="Create">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Agregar categoria</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Categorias</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a  asp-controller="Carrito"  asp-action="Index" class="nav-link">
+              <i class="fas fa-shopping-cart"></i>
+              <p>
+                Carrito
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a  asp-controller="Usuarios"  asp-action="Details" class="nav-link">
+              <i class="fas fa-user"></i>
+              <p>
+                Perfil
+              </p>
+            </a>
+          </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>

@@ -1,4 +1,5 @@
 ﻿using FAR.Commands;
+using FAR.Models;
 using FAR.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -34,14 +35,16 @@ namespace FAR.Controllers
         // POST: UsuariosRolController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create([Bind("Id_Rol, Tipo_Usuario")] UsuarioRol usuarioRol)
         {
             try
             {
+                command.SaveUsuariosRol(usuarioRol);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return View();
             }
         }
@@ -49,34 +52,46 @@ namespace FAR.Controllers
         // GET: UsuariosRolController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var usuarioRol = querie.FindByID(id);
+            return View("Editar", new UsuarioRol
+            {
+                Id_Rol = usuarioRol.Id_Rol,
+                Tipo_Usuario = usuarioRol.Tipo_Usuario,
+            });
         }
 
         // POST: UsuariosRolController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit([Bind("Id_Rol, Tipo_Usuario")] UsuarioRol usuarioRol)
         {
             try
             {
+                command.ModifyUsuariosRol(usuarioRol);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return View();
             }
         }
 
         // GET: UsuariosRolController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult ViewDelete(int id)
         {
-            return View();
+            var usuarioRol = querie.FindByID(id);
+            return View("Delete", new UsuarioRol
+            {
+                Id_Rol = usuarioRol.Id_Rol,
+                Tipo_Usuario = usuarioRol.Tipo_Usuario,
+            });
         }
 
         // POST: UsuariosRolController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {

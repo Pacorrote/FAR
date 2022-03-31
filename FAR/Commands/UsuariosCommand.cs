@@ -13,7 +13,7 @@ namespace FAR.Commands
             this.CONNECTIONSTRING = CONNECTIONSTRING;
         }
 
-        public bool ModifyUsuariosRol(Usuarios usuario)
+        public bool ModifyUsuarios(Usuarios usuario)
         {
             string sql = @"UPDATE [dbo].[Usuarios]
                                     SET [Nombre] = @Nombre
@@ -26,7 +26,7 @@ namespace FAR.Commands
                                         ,[Contrasena] = @Contrasena
                                         ,[Username] = @Username
                                         ,[Id_Rol] = @Id_Rol
-                                    WHERE Id_Usuario = " + usuario.Id_Usuario + "; GO";
+                                    WHERE Id_Usuario = " + usuario.Id_Usuario + ";";
             try
             {
                 using (var connection = new SqlConnection(CONNECTIONSTRING))
@@ -45,7 +45,7 @@ namespace FAR.Commands
             }
         }
 
-        public Usuarios RemoveUsuariosRol(int id)
+        public Usuarios RemoveUsuarios(int id)
         {
             Usuarios usuario;
             string sql = "Select * from [dbo].[Usuarios] where Id_Usuario = " + id + ";";
@@ -53,15 +53,33 @@ namespace FAR.Commands
             {
                 usuario = connection.Query<Usuarios>(sql).FirstOrDefault();
             }
+            if (usuario.Id_Rol == 2)
+            {
+                this.RemoveComprador(id);
+            }
+            else
+            {
+
+            }
+            return usuario;
+        }
+
+        private void RemoveComprador(int id)
+        {
+            
+            string sql = "DELETE FROM [dbo].[UsuarioCarrito] WHERE Id_Usuario = " + id + ";";
+            using (var connection = new SqlConnection(CONNECTIONSTRING))
+            {
+                var rowAffected = connection.Execute(sql);
+            }
             sql = "DELETE FROM [dbo].[Usuarios] WHERE Id_Usuario = " + id + ";";
             using (var connection = new SqlConnection(CONNECTIONSTRING))
             {
                 var rowAffected = connection.Execute(sql);
             }
-            return usuario;
         }
 
-        public bool SaveProductoCarrito(Usuarios newUsuario)
+        public bool SaveUsuario(Usuarios newUsuario)
         {
             string sql = @"INSERT INTO [dbo].[Usuarios]
                                    ([Nombre]
@@ -84,8 +102,7 @@ namespace FAR.Commands
                                    ,@Fecha_Nacimiento
                                    ,@Contrasena
                                    ,@Username
-                                   ,@Id_Rol)
-                        GO
+                                   ,@Id_Rol);
                         ";
             try
             {
