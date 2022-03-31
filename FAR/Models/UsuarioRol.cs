@@ -7,5 +7,6 @@ namespace FAR.Models
         [Key]
         public int Id_Rol { get; set; }
         public string Tipo_Usuario { get; set; }
+        
     }
 }

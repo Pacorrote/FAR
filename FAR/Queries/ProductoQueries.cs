@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using FAR.DTOs;
 using FAR.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 
 namespace FAR.Queries
@@ -55,12 +56,12 @@ namespace FAR.Queries
             }
         }
 
-        public uint Productos()
+        public int Productos()
         {
             string sql = "SELECT COUNT(Id_Producto) AS PRODUCTOS FROM Productos;";
             using (var connection = new SqlConnection(_GetConnection))
             {
-                var productos = connection.Query<uint>(sql).FirstOrDefault();
+                var productos = connection.Query<int>(sql).FirstOrDefault();
                 return productos;
             }
         }

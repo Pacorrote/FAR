@@ -15,10 +15,9 @@ namespace FAR.Commands
         {
             var sql = @"
                         UPDATE [dbo].[Categorias]
-                               SET [Id_Categoria] = @Id_Categoria
-                                  ,[Nombre] = @Nombre
+                               SET [Nombre] = @Nombre
                                   ,[Descripcion] = @Descripcion
-                             WHERE Id_Categoria =" + categoria.Id_Categoria + "; GO";
+                             WHERE Id_Categoria =" + categoria.Id_Categoria + ";";
             try
             {
                 using (var connection = new SqlConnection(_GetConnection))
@@ -41,7 +40,7 @@ namespace FAR.Commands
         public Categorias AgregarCategoria(Categorias categoria)
         {
             string sql = @"INSERT INTO [dbo].[Categorias](Nombre,Descripcion) VALUES
-                         (@Nombre,@Descripcion); GO";
+                         (@Nombre,@Descripcion);";
 
             using (var connection = new SqlConnection(_GetConnection))
             {
@@ -53,21 +52,21 @@ namespace FAR.Commands
 
         public Categorias BorrarCategoria(int id)
         {
-            Categorias categoria;
-            string sqlD = "SELECT * FROM [dbo].[Categorias] WHERE Id_Categoria =" + id + ";";
+            Categorias categorias;
+            string sql = "Select * from [dbo].[Categorias] where Id_Categoria = " + id + ";";
             using (var connection = new SqlConnection(_GetConnection))
             {
-                categoria = connection.Query<Categorias>(sqlD).FirstOrDefault();
-
+                categorias = connection.Query<Categorias>(sql).FirstOrDefault();
             }
-
-            string sql = "DELETE FROM Categorias WHERE Id_Categoria = " + id + ";";
-
-            using (var connection = new SqlConnection(_GetConnection))
+            if (categorias.Id_Categoria == 0)
             {
-                var rowAffected = connection.Execute(sql);
+                this.BorrarCategoria(id);
             }
-            return categoria;
+            else
+            {
+
+            }
+            return categorias;
         }
 
     }

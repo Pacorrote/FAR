@@ -14,8 +14,8 @@ namespace FAR.Commands
 
         public Productos AgregarProducto(Productos producto)
         {
-            string sqlAProducto = @"INSERT INTO [dbo].[Productos](Nombre,Descripcion,Stock,Precio,Habilitado,Id_Categoria) VALUES
-                         (@Nombre,@Descripcion,@Stock,@Precio,@Habilitado,@Id_Categoria); GO";
+            string sqlAProducto = @"INSERT INTO [dbo].[Productos](Nombre, Descripcion,Stock,Precio,Habilitado,Id_Categoria,Id_Usuario) VALUES
+                         (@Nombre,@Descripcion,@Stock,@Precio,1,@Id_Categoria,@Id_Usuario);";
 
                 using (var connection = new SqlConnection(_GetConnection))
                 {
@@ -37,7 +37,8 @@ namespace FAR.Commands
                                   ,[Precio] = @Precio
                                   ,[Habilitado] = @Habilitado
                                   ,[Id_Categoria] = @Id_Categoria
-                             WHERE Id_Producto =" + producto.Id_Producto + "; GO";
+                                  ,[Id_Usuario] = @Id_Usuario
+                             WHERE Id_Producto =" + producto.Id_Producto + ";";
             try
             {
                 using (var connection = new SqlConnection(_GetConnection))

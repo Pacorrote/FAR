@@ -1,4 +1,6 @@
-﻿namespace FAR.DTOs
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace FAR.DTOs
 {
     public class ProductoDTO
     {
@@ -10,6 +12,7 @@
         public bool Habilitado { get; set; }
         public int Id_ProductoCarrito { get; set; }
         public int Id_Categoria { get; set; }
+       // public IEnumerable<SelectListItem> Categoria { get; set; }
         public int Id_Usuario { get; set; }
     }
 }
