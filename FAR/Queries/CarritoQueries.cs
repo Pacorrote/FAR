@@ -14,7 +14,7 @@ namespace FAR.Queries
             this.CONNECTIONSTRING = CONNECTIONSTRING;
         }
 
-        public CarritoDTO FindByID(uint id)
+        public CarritoDTO FindByID(int id)
         {
             string sql = "Select * from [dbo].[Carrito] where Id_Carrito = "+id+";";
             using (var connection = new SqlConnection(CONNECTIONSTRING))

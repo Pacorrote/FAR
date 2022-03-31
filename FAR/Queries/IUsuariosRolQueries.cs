@@ -4,7 +4,7 @@ namespace FAR.Queries
 {
     public interface IUsuariosRolQueries
     {
-        UsuariosRolDTO FindByID(uint id);
+        UsuariosRolDTO FindByID(int id);
         List<UsuariosRolDTO> GetAll();
     }
 }

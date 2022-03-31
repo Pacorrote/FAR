@@ -37,7 +37,7 @@ namespace FAR.Commands
             }
         }
 
-        public Carrito RemoveUsuariosRol(uint id)
+        public Carrito RemoveUsuariosRol(int id)
         {
             Carrito carrito;
             string sql = "Select * from [dbo].[Carrito] where Id_Carrito = " + id + ";";

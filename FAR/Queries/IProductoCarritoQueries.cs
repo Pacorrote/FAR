@@ -4,7 +4,7 @@ namespace FAR.Queries
 {
     public interface IProductoCarritoQueries
     {
-        ProductosCarritoDTO FindByID(uint id);
+        ProductosCarritoDTO FindByID(int id);
         List<ProductosCarritoDTO> GetAll();
     }
 }

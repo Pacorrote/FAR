@@ -6,6 +6,6 @@ namespace FAR.Commands
     {
         bool ActualizarCategoria(Categorias categoria);
         Categorias AgregarCategoria(Categorias categoria);
-        Categorias BorrarCategoria(uint id);
+        Categorias BorrarCategoria(int id);
     }
 }

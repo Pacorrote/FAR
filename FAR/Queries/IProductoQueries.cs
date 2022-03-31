@@ -7,7 +7,7 @@ namespace FAR.Queries
         ProductoDTO FindById(int idProducto);
         List<ProductoDTO> GetAll();
 
-        uint Productos();
+        int Productos();
 
     }
 }

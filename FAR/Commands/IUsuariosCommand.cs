@@ -6,6 +6,6 @@ namespace FAR.Commands
     {
         bool SaveProductoCarrito(Usuarios newUsuario);
         bool ModifyUsuariosRol(Usuarios usuario);
-        Usuarios RemoveUsuariosRol(uint id);
+        Usuarios RemoveUsuariosRol(int id);
     }
 }

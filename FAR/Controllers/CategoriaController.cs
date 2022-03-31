@@ -1,4 +1,5 @@
 ﻿using FAR.Commands;
+using FAR.Models;
 using FAR.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,20 +29,22 @@ namespace FAR.Controllers
         // GET: CategoriaController/Create
         public ActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         // POST: CategoriaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create([Bind("Nombre,Descripcion")]Categorias categoria)
         {
             try
             {
+                command.AgregarCategoria(categoria);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return View();
             }
         }
@@ -49,20 +52,29 @@ namespace FAR.Controllers
         // GET: CategoriaController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var categoria = querie.FindById(id);
+            return View("Editar", new Categorias
+            {
+                Id_Categoria=categoria.Id_Categoria,
+                Nombre = categoria.Nombre,
+                Descripcion = categoria.Descripcion,
+                
+            });
         }
 
         // POST: CategoriaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit([Bind("Id_Categoria,Nombre,Descripcion")]Categorias categoria)
         {
             try
             {
+                command.ActualizarCategoria(categoria);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return View();
             }
         }
@@ -70,7 +82,13 @@ namespace FAR.Controllers
         // GET: CategoriaController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var categoria = querie.FindById(id);
+            return View("Delete", new Categorias
+            {
+                Nombre = categoria.Nombre,
+                Descripcion = categoria.Descripcion,
+                
+            });
         }
 
         // POST: CategoriaController/Delete/5

@@ -1,4 +1,6 @@
 ﻿using FAR.Commands;
+using FAR.DTOs;
+using FAR.Models;
 using FAR.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,12 +13,15 @@ namespace FAR.Controllers
         public const string SQLCONNECTION = "Server=tcp:farstore.database.windows.net,1433;Initial Catalog=FAR;Persist Security Info=False;User ID=FAR;Password=FixWWxkf6VZkysE;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         private readonly ProductoCommands command = new ProductoCommands(SQLCONNECTION);
         private readonly ProductoQueries querie = new ProductoQueries(SQLCONNECTION);
+
+        
         // GET: ProductoController
         public ActionResult Index()
         {
             var lista = querie.GetAll();
             ViewData["lista"] = lista;
             ViewData["productos"] = querie.Productos();
+
             return View("View");
         }
 
@@ -36,22 +41,35 @@ namespace FAR.Controllers
         // POST: ProductoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create([Bind("Nombre,Descripcion,Stock,Precio,Habilitado,Id_Categoria,Id_Usuario")] Productos producto)
         {
+
             try
             {
+                command.AgregarProducto(producto);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return View();
             }
         }
 
         // GET: ProductoController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Editar(int id)
         {
-            return View();
+            try
+            {
+                
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return View();
+            }
+
         }
 
         // POST: ProductoController/Edit/5

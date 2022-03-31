@@ -19,7 +19,7 @@ namespace FAR.Controllers
         }
 
         // GET: UsuariosRolController/Details/5
-        public ActionResult Details(uint id)
+        public ActionResult Details(int id)
         {
             var usuarioRol = querie.FindByID(id);
             return View("Details", usuarioRol);
