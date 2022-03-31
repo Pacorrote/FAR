@@ -4,8 +4,15 @@
     ViewData["Title"] = "Details";
 }
 
+<div class="content-wrapper">
+<section class="content-header">
+<div class="col-12 col-md-12">
 <h1>Details</h1>
+</div>
+</section>
 
+<section class="content">
+    <div class="container-fluid">
 <div>
     <h4>CarritoDTO</h4>
     <hr />
@@ -39,4 +46,7 @@
 <div>
     @Html.ActionLink("Edit", "Edit", new {  id = Model.Id_Carrito  }) |
     <a asp-action="Index">Back to List</a>
+</div>
+</div>
+</section>
 </div>

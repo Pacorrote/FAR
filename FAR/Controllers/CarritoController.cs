@@ -19,7 +19,7 @@ namespace FAR.Controllers
         }
 
         // GET: CarritoController/Details/5
-        public ActionResult Details(uint id)
+        public ActionResult Details(int id)
         {
             var carrito = querie.FindByID(id);
             return View("Details", carrito);
