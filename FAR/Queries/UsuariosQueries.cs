@@ -66,5 +66,28 @@ namespace FAR.Queries
             }
             return list;
         }
+
+        public UsuariosDTO Login(string Email, string Contrasena)
+        {
+            string sql = "Select * from [dbo].[Usuarios] where Contrasena = '" + Contrasena + "' and Email = '"+Email+"';";
+            using (var connection = new SqlConnection(CONNECTIONSTRING))
+            {
+                var usuario = connection.Query<Usuarios>(sql).FirstOrDefault();
+                return new UsuariosDTO
+                {
+                    Email = usuario.Email,
+                    Contrasena = usuario.Contrasena,
+                    Calle = usuario.Calle,
+                    Apellidos = usuario.Apellidos,
+                    Fecha_Nacimiento = usuario.Fecha_Nacimiento,
+                    Id_Localidad = usuario.Id_Localidad,
+                    Id_Rol = usuario.Id_Rol,
+                    Id_Usuario = usuario.Id_Usuario,
+                    Nombre = usuario.Nombre,
+                    Telefono = usuario.Telefono,
+                    Username = usuario.Username,
+                };
+            }
+        }
     }
 }

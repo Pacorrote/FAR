@@ -12,6 +12,24 @@ namespace FAR.Controllers
         public const string SQLCONNECTION = "Server=tcp:farstore.database.windows.net,1433;Initial Catalog=FAR;Persist Security Info=False;User ID=FAR;Password=FixWWxkf6VZkysE;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         private readonly UsuariosCommand command = new UsuariosCommand(SQLCONNECTION);
         private readonly UsuariosQueries querie = new UsuariosQueries(SQLCONNECTION);
+
+        public ActionResult ViewLogin()
+        {
+            return View();
+        }
+
+        public ActionResult Login([Bind("Email")] string Email, [Bind("Contrasena")] string Contrasena)
+        {
+            var usuario = querie.Login(Email, Contrasena);
+            if(usuario is not null)
+            {
+                OwnTools.FARCache.OwnCache.Add("Id_Usuario", usuario.Id_Usuario);
+                OwnTools.FARCache.OwnCache.Add("Id_Rol", usuario.Id_Rol);
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction(nameof(ViewLogin));
+        }
+
         // GET: UsuariosController
         public ActionResult Index()
         {
