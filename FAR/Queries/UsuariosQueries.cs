@@ -14,7 +14,7 @@ namespace FAR.Queries
             this.CONNECTIONSTRING = CONNECTIONSTRING;
         }
 
-        public UsuariosDTO FindByID(uint id)
+        public UsuariosDTO FindByID(int id)
         {
             string sql = "Select * from [dbo].[Usuarios] where Id_Usuario = " + id + ";";
             using (var connection = new SqlConnection(CONNECTIONSTRING))

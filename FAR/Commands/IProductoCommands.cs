@@ -6,7 +6,7 @@ namespace FAR.Commands
     {
         bool ActualizarProducto(Productos producto);
         Productos AgregarProducto(Productos producto);
-        Productos BorrarProducto(uint id);
+        Productos BorrarProducto(int id);
         bool GuardarProducto(Productos producto);
     }
 }

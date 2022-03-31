@@ -4,7 +4,7 @@ namespace FAR.Queries
 {
     public interface IUsuariosQueries
     {
-        UsuariosDTO FindByID(uint id);
+        UsuariosDTO FindByID(int id);
         List<UsuariosDTO> GetAll();
     }
 }

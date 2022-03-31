@@ -35,7 +35,7 @@ namespace FAR.Commands
             }
         }
 
-        public UsuarioRol RemoveUsuariosRol(uint id)
+        public UsuarioRol RemoveUsuariosRol(int id)
         {
             UsuarioRol usuarioRol;
             string sql = "Select * from [dbo].[UsuarioRol] where Id_Rol = " + id + ";";

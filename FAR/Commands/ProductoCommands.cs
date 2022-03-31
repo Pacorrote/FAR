@@ -57,7 +57,7 @@ namespace FAR.Commands
             }
         }
 
-        public Productos BorrarProducto(uint id)
+        public Productos BorrarProducto(int id)
         {
             Productos producto;
             string sqlBProducto = "SELECT * FROM [dbo].[Productos] WHERE Id_Producto =" + id + ";";

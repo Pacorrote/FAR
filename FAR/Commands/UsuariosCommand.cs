@@ -45,7 +45,7 @@ namespace FAR.Commands
             }
         }
 
-        public Usuarios RemoveUsuarios(uint id)
+        public Usuarios RemoveUsuarios(int id)
         {
             Usuarios usuario;
             string sql = "Select * from [dbo].[Usuarios] where Id_Usuario = " + id + ";";
@@ -64,7 +64,7 @@ namespace FAR.Commands
             return usuario;
         }
 
-        private void RemoveComprador(uint id)
+        private void RemoveComprador(int id)
         {
             
             string sql = "DELETE FROM [dbo].[UsuarioCarrito] WHERE Id_Usuario = " + id + ";";

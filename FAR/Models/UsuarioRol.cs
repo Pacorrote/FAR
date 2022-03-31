@@ -5,7 +5,7 @@ namespace FAR.Models
     public class UsuarioRol
     {
         [Key]
-        public uint Id_Rol { get; set; }
+        public int Id_Rol { get; set; }
         public string Tipo_Usuario { get; set; }
     }
 }

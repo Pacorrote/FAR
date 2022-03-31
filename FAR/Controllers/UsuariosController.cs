@@ -20,7 +20,7 @@ namespace FAR.Controllers
         }
 
         // GET: UsuariosController/Details/5
-        public ActionResult Details(uint id)
+        public ActionResult Details(int id)
         {
             var usuario = querie.FindByID(id);
             return View("Details", usuario);
@@ -51,7 +51,7 @@ namespace FAR.Controllers
         }
 
         // GET: UsuariosController/Edit/5
-        public ActionResult Edit(uint id)
+        public ActionResult Edit(int id)
         {
             var usuario = querie.FindByID(id);
             return View("Editar", usuario);
@@ -75,7 +75,7 @@ namespace FAR.Controllers
         }
 
         // GET: UsuariosController/Delete/5
-        public ActionResult ViewDelete(uint id)
+        public ActionResult ViewDelete(int id)
         {
             var usuario = querie.FindByID(id);
             return View("Delete", usuario);
@@ -84,7 +84,7 @@ namespace FAR.Controllers
         // POST: UsuariosController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(uint id)
+        public ActionResult Delete(int id)
         {
             try
             {
