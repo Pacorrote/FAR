@@ -18,7 +18,7 @@ namespace FAR.Commands
                                SET [Folio] = @Folio
                                   ,[Cancelado] = @Cancelado
                                   ,[Total_venta] = @Total_venta
-                         WHERE Id_Carrito = " + carrito.Id_Carrito + "; GO";
+                         WHERE Id_Carrito = " + carrito.Id_Carrito + ";";
             try
             {
                 using (var connection = new SqlConnection(CONNECTIONSTRING))
@@ -37,7 +37,7 @@ namespace FAR.Commands
             }
         }
 
-        public Carrito RemoveUsuariosRol(int id)
+        public Carrito RemoveCarrito(int id)
         {
             Carrito carrito;
             string sql = "Select * from [dbo].[Carrito] where Id_Carrito = " + id + ";";
@@ -56,7 +56,7 @@ namespace FAR.Commands
         public bool SaveCarrito(Carrito newCarrito)
         {
             string sql = @"
-                        INSERT INTO [dbo].[ProductosCarrito]
+                        INSERT INTO [dbo].[Carrito]
                                    ([Folio]
                                    ,[Cancelado]
                                    ,[Total_venta])
@@ -64,7 +64,6 @@ namespace FAR.Commands
                                    (@Folio
                                    ,@Cancelado
                                    ,@Total_venta)
-                        GO
                         ";
             try
             {

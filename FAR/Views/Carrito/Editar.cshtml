@@ -1,27 +1,21 @@
 ﻿@model FAR.Models.Carrito
 
 @{
-    ViewData["Title"] = "Editar";
+    ViewData["Title"] = "Edit";
 }
-<div class="content-wrapper">
-<section class="content-header">
-<div class="col-12 col-md-12">
-<h1>Editar</h1>
 
+
+<div class="content-wrapper">
+    <section class="content">
+<h1>Editar</h1>
 <h4>Carrito</h4>
 <hr />
-</div>
-</section>
-
-<section class="content">
-    <div class="container-fluid">
 <div class="row">
     <div class="col-md-12">
-        <form asp-action="Editar">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Id_Carrito" class="control-label"></label>
-                <input asp-for="Id_Carrito" class="form-control" />
+                <input asp-for="Id_Carrito" class="form-control" hidden/>
                 <span asp-validation-for="Id_Carrito" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -45,12 +39,11 @@
         </form>
     </div>
 </div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
 </div>
 </section>
-<!--<div>
-    <a asp-action="Index">Back to List</a>
-</div>-->
-
 </div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

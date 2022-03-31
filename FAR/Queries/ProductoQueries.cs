@@ -23,12 +23,13 @@ namespace FAR.Queries
                 return new ProductoDTO
                 {
                     Id_Producto = productos.Id_Producto,
+                    Nombre = productos.Nombre,
                     Descripcion = productos.Descripcion,
+                    Stock = productos.Stock,
+                    Precio = productos.Precio,
                     Habilitado = productos.Habilitado,
                     Id_Categoria = productos.Id_Categoria,
-                    Nombre = productos.Nombre,
-                    Precio = productos.Precio,
-                    Stock = productos.Stock,
+                    Id_Usuario = productos.Id_Usuario,
                 };
             }
         }
@@ -44,12 +45,13 @@ namespace FAR.Queries
                     list.Add(new ProductoDTO()
                     {
                         Id_Producto = producto[i].Id_Producto,
+                        Nombre = producto[i].Nombre,
                         Descripcion = producto[i].Descripcion,
+                        Stock = producto[i].Stock,
+                        Precio = producto[i].Precio,
                         Habilitado = producto[i].Habilitado,
                         Id_Categoria = producto[i].Id_Categoria,
-                        Nombre = producto[i].Nombre,
-                        Precio = producto[i].Precio,
-                        Stock = producto[i].Stock,
+                        Id_Usuario = producto[i].Id_Usuario,
                     });
                 }
                 return list;

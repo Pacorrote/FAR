@@ -22,10 +22,10 @@ namespace FAR.Queries
                 var carrito = connection.Query<Carrito>(sql).FirstOrDefault();
                 return new CarritoDTO
                 {
-                    Total_venta = carrito.Total_venta,
-                    Cancelado = carrito.Cancelado,
-                    Folio = carrito.Folio,
                     Id_Carrito = carrito.Id_Carrito,
+                    Folio = carrito.Folio,
+                    Cancelado = carrito.Cancelado,
+                    Total_venta = carrito.Total_venta,
                 };
             }
         }
@@ -36,15 +36,15 @@ namespace FAR.Queries
             string sql = "Select * from [dbo].[Carrito]";
             using (var connection = new SqlConnection(CONNECTIONSTRING))
             {
-                var usuarios = connection.Query<Carrito>(sql).ToList();
-                for (int i = 0; i < usuarios.Count; i++)
+                var carrito = connection.Query<Carrito>(sql).ToList();
+                for (int i = 0; i < carrito.Count; i++)
                 {
                     list.Add(new CarritoDTO()
                     {
-                        Id_Carrito = usuarios[i].Id_Carrito,
-                        Cancelado = usuarios[i].Cancelado,
-                        Folio = usuarios[i].Folio,
-                        Total_venta = usuarios[i].Total_venta,
+                        Id_Carrito = carrito[i].Id_Carrito,
+                        Folio = carrito[i].Folio,
+                        Cancelado = carrito[i].Cancelado,
+                        Total_venta = carrito[i].Total_venta,
                     });
                 }
             }

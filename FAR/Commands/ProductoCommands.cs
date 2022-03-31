@@ -30,8 +30,7 @@ namespace FAR.Commands
         {
             var sqlUProducto = @"
                         UPDATE [dbo].[Productos]
-                               SET [Id_Producto] = @Id_Producto
-                                  ,[Nombre] = @Nombre
+                               SET [Nombre] = @Nombre
                                   ,[Descripcion] = @Descripcion
                                   ,[Stock] = @Stock
                                   ,[Precio] = @Precio

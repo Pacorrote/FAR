@@ -4,15 +4,8 @@
     ViewData["Title"] = "View";
 }
 
-<div class="content-wrapper">
-
-<div class="col-12 col-md-12">
 <h1>View</h1>
-</div>
 
-
-<section class="content">
-    <div class="container-fluid">
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -50,15 +43,11 @@
                 @Html.DisplayFor(modelItem => item.Total_venta)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.Id_Carrito  }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Id_Carrito  }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id_Carrito  })
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Id_Carrito  }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id_Carrito  }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Delete", "DeleteV", new { id=item.Id_Carrito  }, new { @class = "btn btn-danger" }) 
             </td>
         </tr>
 }
     </tbody>
 </table>
-</div>
-</section>
-
-</div>

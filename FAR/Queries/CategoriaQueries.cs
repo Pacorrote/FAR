@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace FAR.Queries
 {
-    public class CategoriasQueries
+    public class CategoriasQueries:ICategoriaQueries
     {
         private readonly string _GetConnection;
 
