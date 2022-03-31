@@ -1,4 +1,5 @@
 ﻿using FAR.Commands;
+using FAR.Models;
 using FAR.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,59 +29,71 @@ namespace FAR.Controllers
         // GET: UsuariosController/Create
         public ActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         // POST: UsuariosController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create([Bind("Nombre, Apellidos, Telefono, Email, Calle, Id_Localidad, Fecha_Nacimiento, Contrasena, Username, Id_Rol")] Usuarios newUsuario)
         {
+
             try
             {
+                command.SaveUsuario(newUsuario);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return View();
             }
         }
 
         // GET: UsuariosController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(uint id)
         {
-            return View();
+            var usuario = querie.FindByID(id);
+            return View("Editar", usuario);
         }
 
         // POST: UsuariosController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit([Bind("Id_Usuario, Nombre, Apellidos, Telefono, Email, Calle, Id_Localidad, Fecha_Nacimiento, Contrasena, Username, Id_Rol")] Usuarios usuario)
         {
             try
             {
+                command.ModifyUsuarios(usuario);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return View();
             }
         }
 
         // GET: UsuariosController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult ViewDelete(uint id)
         {
-            return View();
+            var usuario = querie.FindByID(id);
+            return View("Delete", usuario);
         }
 
         // POST: UsuariosController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(uint id)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var usuario = command.RemoveUsuarios(id);
+                if(usuario != null)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                return View();
             }
             catch
             {
