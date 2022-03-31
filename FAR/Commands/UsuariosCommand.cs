@@ -26,7 +26,7 @@ namespace FAR.Commands
                                         ,[Contrasena] = @Contrasena
                                         ,[Username] = @Username
                                         ,[Id_Rol] = @Id_Rol
-                                    WHERE Id_Usuario = " + usuario.Id_Usuario + "; GO";
+                                    WHERE Id_Usuario = " + usuario.Id_Usuario + ";";
             try
             {
                 using (var connection = new SqlConnection(CONNECTIONSTRING))
@@ -45,7 +45,7 @@ namespace FAR.Commands
             }
         }
 
-        public Usuarios RemoveUsuarios(uint id)
+        public Usuarios RemoveUsuarios(int id)
         {
             Usuarios usuario;
             string sql = "Select * from [dbo].[Usuarios] where Id_Usuario = " + id + ";";
@@ -53,7 +53,7 @@ namespace FAR.Commands
             {
                 usuario = connection.Query<Usuarios>(sql).FirstOrDefault();
             }
-            if (id == 2)
+            if (usuario.Id_Rol == 2)
             {
                 this.RemoveComprador(id);
             }
@@ -64,7 +64,7 @@ namespace FAR.Commands
             return usuario;
         }
 
-        private void RemoveComprador(uint id)
+        private void RemoveComprador(int id)
         {
             
             string sql = "DELETE FROM [dbo].[UsuarioCarrito] WHERE Id_Usuario = " + id + ";";
@@ -102,8 +102,7 @@ namespace FAR.Commands
                                    ,@Fecha_Nacimiento
                                    ,@Contrasena
                                    ,@Username
-                                   ,@Id_Rol)
-                        GO
+                                   ,@Id_Rol);
                         ";
             try
             {

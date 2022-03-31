@@ -10,12 +10,10 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Editart">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Id_Usuario" class="control-label"></label>
-                <input asp-for="Id_Usuario" class="form-control" />
-                <span asp-validation-for="Id_Usuario" class="text-danger"></span>
+                <input asp-for="Id_Usuario" class="form-control" type="hidden"/>
             </div>
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>

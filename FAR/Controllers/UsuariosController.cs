@@ -20,7 +20,7 @@ namespace FAR.Controllers
         }
 
         // GET: UsuariosController/Details/5
-        public ActionResult Details(uint id)
+        public ActionResult Details(int id)
         {
             var usuario = querie.FindByID(id);
             return View("Details", usuario);
@@ -51,10 +51,23 @@ namespace FAR.Controllers
         }
 
         // GET: UsuariosController/Edit/5
-        public ActionResult Edit(uint id)
+        public ActionResult Edit(int id)
         {
             var usuario = querie.FindByID(id);
-            return View("Editar", usuario);
+            return View("Editar", new Usuarios
+            {
+                Apellidos = usuario.Apellidos,
+                Calle = usuario.Calle,
+                Contrasena = usuario.Contrasena,
+                Email = usuario.Email,
+                Fecha_Nacimiento = usuario.Fecha_Nacimiento,
+                Id_Localidad = usuario.Id_Localidad,
+                Id_Rol = usuario.Id_Rol,
+                Id_Usuario = usuario.Id_Usuario,
+                Nombre = usuario.Nombre,
+                Telefono = usuario.Telefono,
+                Username = usuario.Username,
+            });
         }
 
         // POST: UsuariosController/Edit/5
@@ -75,16 +88,29 @@ namespace FAR.Controllers
         }
 
         // GET: UsuariosController/Delete/5
-        public ActionResult ViewDelete(uint id)
+        public ActionResult ViewDelete(int id)
         {
             var usuario = querie.FindByID(id);
-            return View("Delete", usuario);
+            return View("Delete", new Usuarios
+            {
+                Apellidos = usuario.Apellidos,
+                Calle = usuario.Calle,
+                Contrasena = usuario.Contrasena,
+                Email = usuario.Email,
+                Fecha_Nacimiento = usuario.Fecha_Nacimiento,
+                Id_Localidad = usuario.Id_Localidad,
+                Id_Rol = usuario.Id_Rol,
+                Id_Usuario = usuario.Id_Usuario,
+                Nombre = usuario.Nombre,
+                Telefono = usuario.Telefono,
+                Username = usuario.Username,
+            });
         }
 
         // POST: UsuariosController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(uint id)
+        public ActionResult Delete(int id)
         {
             try
             {
