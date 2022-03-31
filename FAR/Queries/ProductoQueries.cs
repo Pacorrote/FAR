@@ -55,5 +55,14 @@ namespace FAR.Queries
             }
         }
 
+        public uint Productos()
+        {
+            string sql = "SELECT COUNT(Id_Producto) AS PRODUCTOS FROM Productos;";
+            using (var connection = new SqlConnection(_GetConnection))
+            {
+                var productos = connection.Query<uint>(sql).FirstOrDefault();
+                return productos;
+            }
+        }
     }
 }

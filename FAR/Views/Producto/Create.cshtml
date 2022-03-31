@@ -4,17 +4,25 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Productos</h4>
+<div class="content-wrapper">
+<section class="content-header">
+<div class="col-12 col-md-12">
+<h1>Agregar</h1>
+<br />
+<h4>Producto</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+</div>
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-md-12">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Id_Producto" class="control-label"></label>
-                <input asp-for="Id_Producto" class="form-control" />
+                <label asp-for="Id_Producto" class="control-label">Id</label>
+                <input asp-for="Id_Producto" class="form-control" disabled/>
                 <span asp-validation-for="Id_Producto" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -37,27 +45,27 @@
                 <input asp-for="Precio" class="form-control" />
                 <span asp-validation-for="Precio" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Habilitado" /> @Html.DisplayNameFor(model => model.Habilitado)
-                </label>
-            </div>
+            
             <div class="form-group">
-                <label asp-for="Id_Categoria" class="control-label"></label>
+                <label asp-for="Id_Categoria" class="control-label">Categoria</label>
                 <input asp-for="Id_Categoria" class="form-control" />
                 <span asp-validation-for="Id_Categoria" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Agregar" class="btn btn-primary" style="float:right;"/>
             </div>
         </form>
     </div>
 </div>
+</div>
+</section>
 
+<!--
 <div>
     <a asp-action="Index">Back to List</a>
-</div>
+</div>-->
 
+</div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

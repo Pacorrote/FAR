@@ -12,5 +12,6 @@ namespace FAR.Models
         public float Precio { get; set; }
         public bool Habilitado { get; set; }
         public uint Id_Categoria { get; set; }
+        public uint Id_Usuario { get; set; }
     }
 }

@@ -13,25 +13,24 @@ namespace FAR.Queries
         {
             _GetConnection = getConnection;
         }
-
-        public CategoriaDTO FindById(int categoria)
+        public CategoriaDTO FindById(int idCategoria)
         {
-            string sql = "Select * from [dbo].[Categoria] where Id_Categoria = " + categoria + ";";
+            string sql = "Select * from [dbo].[Categorias] where Id_Categoria = " + idCategoria + ";";
             using (var connection = new SqlConnection(_GetConnection))
             {
-                var categoriaR = connection.Query<Categorias>(sql).FirstOrDefault();
+                var categoria = connection.Query<Categorias>(sql).FirstOrDefault();
                 return new CategoriaDTO
                 {
-                    Id_Categoria = categoriaR.Id_Categoria,
-                    Descripcion = categoriaR.Descripcion,
-                    Nombre = categoriaR.Nombre,
+                    Id_Categoria = categoria.Id_Categoria,
+                    Nombre = categoria.Nombre,
+                    Descripcion = categoria.Descripcion,
                 };
             }
         }
         public List<CategoriaDTO> GetAll()
         {
             List<CategoriaDTO> list = new List<CategoriaDTO>();
-            string sql = "select * from [dbo].[Categoria]";
+            string sql = "select * from [dbo].[Categorias]";
             using (var connection = new SqlConnection(_GetConnection))
             {
                 var categoria = connection.Query<Categorias>(sql).ToList();
@@ -40,8 +39,8 @@ namespace FAR.Queries
                     list.Add(new CategoriaDTO()
                     {
                         Id_Categoria = categoria[i].Id_Categoria,
-                        Descripcion = categoria[i].Descripcion,
                         Nombre = categoria[i].Nombre,
+                        Descripcion = categoria[i].Descripcion,
                     });
                 }
                 return list;
