@@ -26,7 +26,7 @@ namespace FAR.Commands
                                         ,[Contrasena] = @Contrasena
                                         ,[Username] = @Username
                                         ,[Id_Rol] = @Id_Rol
-                                    WHERE Id_Usuario = " + usuario.Id_Usuario + "; GO";
+                                    WHERE Id_Usuario = " + usuario.Id_Usuario + ";";
             try
             {
                 using (var connection = new SqlConnection(CONNECTIONSTRING))
@@ -53,7 +53,7 @@ namespace FAR.Commands
             {
                 usuario = connection.Query<Usuarios>(sql).FirstOrDefault();
             }
-            if (id == 2)
+            if (usuario.Id_Rol == 2)
             {
                 this.RemoveComprador(id);
             }
@@ -102,8 +102,7 @@ namespace FAR.Commands
                                    ,@Fecha_Nacimiento
                                    ,@Contrasena
                                    ,@Username
-                                   ,@Id_Rol)
-                        GO
+                                   ,@Id_Rol);
                         ";
             try
             {

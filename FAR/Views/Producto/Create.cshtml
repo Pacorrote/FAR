@@ -13,7 +13,11 @@
 <hr />
 </div>
 </section>
-
+@using Microsoft.AspNetCore.Http
+    @{
+        //Algo para esto
+        var Id_Usuario = HttpContext.Session.GetInt32("Id_Usuario");
+    }
 <section class="content">
     <div class="container-fluid">
     <div class="row">
@@ -22,7 +26,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Id_Producto" class="control-label">Id</label>
-                <input asp-for="Id_Producto" class="form-control" disabled/>
+                <input name="Id_Usuario" value=@Id_Usuario class="form-control" type="hidden"/>
                 <span asp-validation-for="Id_Producto" class="text-danger"></span>
             </div>
             <div class="form-group">
