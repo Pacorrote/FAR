@@ -4,10 +4,11 @@
     ViewData["Title"] = "View";
 }
 
-<h1>View</h1>
 
+<div class="content-wrapper">
+<section class="content">
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Agregar categoria</a>
 </p>
 <table class="table">
     <thead>
@@ -37,11 +38,13 @@
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id_Categoria}) |
-                @Html.ActionLink("Details", "Details", new {  id=item.Id_Categoria }) 
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id_Categoria}, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.Id_Categoria }, new { @class = "btn btn-info" }) 
                @* @Html.ActionLink("Delete", "Delete", new { id=item.Id_Categoria })*@
             </td>
         </tr>
 }
     </tbody>
 </table>
+</section>
+</div>

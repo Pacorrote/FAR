@@ -1,4 +1,5 @@
 ﻿using FAR.Commands;
+using FAR.Models;
 using FAR.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,21 +29,23 @@ namespace FAR.Controllers
         // GET: CarritoController/Create
         public ActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         // POST: CarritoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create([Bind("Folio,Cancelado,Total_venta")] Carrito carrito)
         {
-            
+
             try
             {
+                command.SaveCarrito(carrito);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return View();
             }
         }
@@ -50,16 +53,24 @@ namespace FAR.Controllers
         // GET: CarritoController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var carrito = querie.FindByID(id);
+            return View("Editar", new Carrito
+            {
+                Id_Carrito = carrito.Id_Carrito,
+                Folio = carrito.Folio,
+                Cancelado = carrito.Cancelado,
+                Total_venta = carrito.Total_venta,
+            });
         }
 
         // POST: CarritoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit([Bind("Id_Carrito,Folio,Cancelado,Total_venta")]Carrito carrito)
         {
             try
             {
+                command.ModifyCarrito(carrito);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -69,19 +80,31 @@ namespace FAR.Controllers
         }
 
         // GET: CarritoController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult DeleteV(int id)
         {
-            return View();
+            var carrito = querie.FindByID(id);
+            return View("Delete", new Carrito
+            {
+                Id_Carrito = carrito.Id_Carrito,
+                Folio = carrito.Folio,
+                Cancelado = carrito.Cancelado,
+                Total_venta = carrito.Total_venta,
+            });
         }
 
         // POST: CarritoController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var carrito = command.RemoveCarrito(id);
+                if (carrito != null)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                return View();
             }
             catch
             {

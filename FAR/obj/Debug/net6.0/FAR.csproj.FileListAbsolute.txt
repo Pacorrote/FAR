@@ -479,3 +479,4 @@ C:\Users\ARC\Documents\Visual Studio 2022\Projects\FAR\FAR\bin\Debug\net6.0\runt
 C:\Users\ARC\Documents\Visual Studio 2022\Projects\FAR\FAR\bin\Debug\net6.0\runtimes\win-arm64\lib\net6.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\ARC\Documents\Visual Studio 2022\Projects\FAR\FAR\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 >>>>>>> main
+>>>>>>> 1b3b0c3d22629fbfe61b1d5f88a15f32c5de994e

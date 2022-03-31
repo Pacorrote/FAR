@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ARC\\Documents\\Visual Studio 2022\\Projects\\FAR\\FAR\\FAR.csproj": {}
+    "C:\\Users\\amaganal\\source\\repos\\FAR\\FAR\\FAR.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ARC\\Documents\\Visual Studio 2022\\Projects\\FAR\\FAR\\FAR.csproj": {
+    "C:\\Users\\amaganal\\source\\repos\\FAR\\FAR\\FAR.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ARC\\Documents\\Visual Studio 2022\\Projects\\FAR\\FAR\\FAR.csproj",
+        "projectUniqueName": "C:\\Users\\amaganal\\source\\repos\\FAR\\FAR\\FAR.csproj",
         "projectName": "FAR",
-        "projectPath": "C:\\Users\\ARC\\Documents\\Visual Studio 2022\\Projects\\FAR\\FAR\\FAR.csproj",
-        "packagesPath": "C:\\Users\\ARC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ARC\\Documents\\Visual Studio 2022\\Projects\\FAR\\FAR\\obj\\",
+        "projectPath": "C:\\Users\\amaganal\\source\\repos\\FAR\\FAR\\FAR.csproj",
+        "packagesPath": "C:\\Users\\amaganal\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amaganal\\source\\repos\\FAR\\FAR\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\ARC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\amaganal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

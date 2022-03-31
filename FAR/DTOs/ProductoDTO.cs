@@ -10,9 +10,7 @@ namespace FAR.DTOs
         public int Stock { get; set; }
         public float Precio { get; set; }
         public bool Habilitado { get; set; }
-        public int Id_ProductoCarrito { get; set; }
         public int Id_Categoria { get; set; }
-       // public IEnumerable<SelectListItem> Categoria { get; set; }
         public int Id_Usuario { get; set; }
     }
 }

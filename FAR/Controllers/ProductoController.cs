@@ -35,7 +35,7 @@ namespace FAR.Controllers
         // GET: ProductoController/Create
         public ActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         // POST: ProductoController/Create
@@ -57,28 +57,31 @@ namespace FAR.Controllers
         }
 
         // GET: ProductoController/Edit/5
-        public ActionResult Editar(int id)
+        public ActionResult Edit(int id)
         {
-            try
+            var productos = querie.FindById(id);
+            return View("Edit", new Productos
             {
-                
-                return RedirectToAction(nameof(Index));
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return View();
-            }
+                Id_Producto = productos.Id_Producto,
+                Nombre = productos.Nombre,
+                Descripcion = productos.Descripcion,
+                Stock = productos.Stock,
+                Precio = productos.Precio,
+                Habilitado = productos.Habilitado,
+                Id_Categoria = productos.Id_Categoria,
+                Id_Usuario = productos.Id_Usuario,
+            });
 
         }
 
         // POST: ProductoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit([Bind("Id_Producto,Nombre,Descripcion,Stock,Precio,Habilitado,Id_Categoria,Id_Usuario")]Productos producto)
         {
             try
             {
+                command.ActualizarProducto(producto);
                 return RedirectToAction(nameof(Index));
             }
             catch
