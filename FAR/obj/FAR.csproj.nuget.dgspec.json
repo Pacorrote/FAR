@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ARC\\Documents\\Visual Studio 2022\\Projects\\FAR\\FAR\\FAR.csproj": {}
+    "C:\\Users\\rramosra\\Desktop\\Project\\FAR\\FAR\\FAR.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ARC\\Documents\\Visual Studio 2022\\Projects\\FAR\\FAR\\FAR.csproj": {
+    "C:\\Users\\rramosra\\Desktop\\Project\\FAR\\FAR\\FAR.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ARC\\Documents\\Visual Studio 2022\\Projects\\FAR\\FAR\\FAR.csproj",
+        "projectUniqueName": "C:\\Users\\rramosra\\Desktop\\Project\\FAR\\FAR\\FAR.csproj",
         "projectName": "FAR",
-        "projectPath": "C:\\Users\\ARC\\Documents\\Visual Studio 2022\\Projects\\FAR\\FAR\\FAR.csproj",
-        "packagesPath": "C:\\Users\\ARC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ARC\\Documents\\Visual Studio 2022\\Projects\\FAR\\FAR\\obj\\",
+        "projectPath": "C:\\Users\\rramosra\\Desktop\\Project\\FAR\\FAR\\FAR.csproj",
+        "packagesPath": "C:\\Users\\rramosra\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rramosra\\Desktop\\Project\\FAR\\FAR\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ARC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rramosra\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -75,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

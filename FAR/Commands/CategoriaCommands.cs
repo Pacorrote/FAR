@@ -51,7 +51,7 @@ namespace FAR.Commands
             return categoria;
         }
 
-        public Categorias BorrarCategoria(uint id)
+        public Categorias BorrarCategoria(int id)
         {
             Categorias categoria;
             string sqlD = "SELECT * FROM [dbo].[Categorias] WHERE Id_Categoria =" + id + ";";

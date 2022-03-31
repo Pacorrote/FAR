@@ -6,7 +6,7 @@ namespace FAR.Commands
     {
         bool ActualizarUsuarioCarrito(UsuarioCarrito usuarioCarrito);
         UsuarioCarrito AgregarUsuarioCarrito(UsuarioCarrito usuarioCarrito);
-        UsuarioCarrito BorrarUsuarioCarrito(uint id);
+        UsuarioCarrito BorrarUsuarioCarrito(int id);
         bool GuardarUsuarioCarrito(UsuarioCarrito usuario);
     }
 }
