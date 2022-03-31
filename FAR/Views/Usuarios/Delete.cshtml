@@ -80,6 +80,7 @@
     </dl>
     
     <form asp-action="Delete">
+        <input type="hidden" value=@Model.Id_Usuario name="id"/>
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>
